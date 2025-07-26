@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Victoria 💖</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <!-- Floating Hearts Background -->
+  <div class="hearts-bg"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">🎂 Vicky@20</div>
+    <div class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#note">Love Note</a></li>
+      <li><a href="#surprise">Surprise</a></li>
+      <li><a href="#reasons">Why I Love You</a></li>
+    </ul>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home" class="section fade-in">
+    <h1 class="animate-pop">Happy 20th Birthday, Victoria 💖</h1>
+    <p>
+      You are the sweetest blessing life ever gave me. Your smile brightens my world, and your love fills my heart with endless joy.
+    </p>
+    <p>
+      Today is yours — and I'm so glad I get to share it with you. 🥰
+    </p>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="section slide-up">
+    <h2>Memories with You 📸</h2>
+    <p>Each photo is a story... each moment unforgettable 💕</p>
+    <div class="photo-grid">
+      <img src="Jicky.jpg" alt="Victoria 1"/>
+      <img src="IMG-vicky.jpg" alt="Victoria 2"/>
+      <img src="IMG-20240729-WA0040.jpg" alt="Victoria 3"/>
+      <img src="IMG-20250323-WA0016.jpg" alt="Victoria 4"/>
+    </div>
+  </section>
+
+  <!-- LOVE NOTE -->
+  <section id="note" class="section pulse">
+    <h2>To My Lovely Victoria ❤️</h2>
+    <p>
+      You are graceful, brilliant, and full of light. I could search the world and still never find someone as unique as you.
+    </p>
+    <p>
+      Every heartbeat of mine whispers your name... I love you endlessly, Victoria.
+    </p>
+  </section>
+
+  <!-- SURPRISE -->
+  <section id="surprise" class="section fade-in">
+    <h2>🎉 Your Special Surprise</h2>
+    <p>Tap the button below, my queen 💜</p>
+    <button onclick="revealSurprise()">Reveal Love</button>
+    <div id="surprise-box" style="display:none;" class="fade-in surprise-box">
+      <h3>🌟 You Mean Everything To Me 🌟</h3>
+      <p>
+        I made this with all my heart just to show you — you're the most important person in my world aside my family.
+      </p>
+      <audio id="love-audio" src="Cece_Winans_-_The_Goodness_Of_God_CeeNaija.com_.mp3" loop controls></audio>
+      <div id="typed-love" class="typed-text"></div>
+    </div>
+  </section>
+
+  <!-- WHY I LOVE YOU SECTION -->
+  <section id="reasons" class="section slide-up">
+    <h2>Why I Love You, Victoria 💞</h2>
+    <ul class="reasons-list">
+      <li>You always believe in me — even when I doubt myself.</li>
+      <li>Your smile feels like home.</li>
+      <li>You make the smallest moments unforgettable.</li>
+      <li>You care deeply, laugh beautifully, and love fearlessly.</li>
+      <li>And simply... because you're you. Perfectly you. 💖</li>
+    </ul>
+  </section>
+
+  <!-- BIRTHDAY BLESSINGS (MATCHED THEME) -->
+<section class="theme-blessings">
+    <h2>✨ Birthday Blessings ✨</h2>
+    
+    <div class="theme-card">
+      <div class="theme-content">
+        <p>Victoria, on your 20th birthday:</p>
+        <ul class="theme-list">
+          <li>May God's peace fill your heart</li>
+          <li>May joy light your path daily</li>
+          <li>May favor open divine doors</li>
+          <li>May you feel cherished beyond measure</li>
+        </ul>
+      </div>
+      
+      <div class="theme-prayer">
+        <p>"Lord, surround Victoria with Your grace. May this year overflow with purpose and beautiful moments. Amen."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Made with 💜 and infinite love by your favorite person</p>
+    <p style="font-style: italic; margin-top: 10px;">"You are my once-in-a-lifetime, Victoria."</p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    const loveMessage = "Victoria, you are the most beautiful part of my world. I love you more with every heartbeat, every moment, every day...";
+    let index = 0;
+
+    function typeLove() {
+      if (index < loveMessage.length) {
+        document.getElementById("typed-love").innerHTML += loveMessage.charAt(index);
+        index++;
+        setTimeout(typeLove, 60);
+      }
+    }
+
+    function revealSurprise() {
+      document.getElementById('surprise-box').style.display = 'block';
+      document.getElementById('love-audio').play();
+      confettiEffect();
+      typeLove();
+    }
+
+    function confettiEffect() {
+      const duration = 3 * 1000;
+      const end = Date.now() + duration;
+      (function frame() {
+        confetti({
+          particleCount: 6,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 }
+        });
+        confetti({
+          particleCount: 6,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 }
+        });
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
+    }
+
+    // Hamburger menu functionality
+    document.getElementById('hamburger').addEventListener('click', function() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active');
+      this.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked (for mobile)
+    document.querySelectorAll('#nav-links a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.getElementById('nav-links').classList.remove('active');
+        document.getElementById('hamburger').classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
